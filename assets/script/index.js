@@ -22,6 +22,7 @@ const errorOutput = select('.output')
 /*****************************************
         Creating new Contact
 *****************************************/
+
 function newContact(name, city, email) {
     const createContact = new Contact(name, city, email)
     return createContact
