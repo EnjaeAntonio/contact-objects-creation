@@ -18,7 +18,6 @@ const contactInfo = select(".contact-input");
 const contactCounter = select('.contact-counter p')
 const errorOutput = select('.output')
 
-
 /*****************************************
         Creating new Contact
 *****************************************/
@@ -64,7 +63,6 @@ function createContact(obj){
 *****************************************/
 
 function assignContact(){
-   
         if(contactInfo.value !== ''){
             const contactInput = contactInfo.value.split(', ');
 
@@ -73,7 +71,6 @@ function assignContact(){
                 errorOutput.innerText = 'Email is not valid. Delete and try again.'
             }else if (!cityRegex.test(contactInput[1])) {
                 errorOutput.innerText = 'City is not valid. Delete and try again.'
-    
             } else if(!nameRegex.test(contactInput[0])){
                 errorOutput.innerText = 'Name is not valid. Delete and try again.'
                 
