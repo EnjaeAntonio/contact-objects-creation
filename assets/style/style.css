@@ -1,0 +1,139 @@
+@import "./reset.css";
+
+
+:root {
+    --app-dark-bg: #1a1d28;
+    --app-red: #ff3c57;
+    --app-green: #33ab4e;
+    --app-purple: #833cff;
+    --app-orange: #ff833c;
+    --app-blue: #3c57ff;
+    --app-blue-hover: #364ee6;
+   }
+
+
+main {
+    background-color: var(--app-dark-bg);
+}
+
+.container {
+    width: min(100% - 30px, 1280px);
+    margin-inline: auto;
+}
+
+header {
+    overflow: hidden;
+    margin-top: 14px;
+}
+
+
+.flexbox {
+    max-height: 56px;
+    display: flex;
+}
+
+.title {
+    width: 20%;
+    height: 40px;
+    padding-left: 15px;
+}
+
+.title h1 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 56px;
+    text-transform: uppercase;
+    letter-spacing: 0.2px;
+    cursor: pointer;
+}
+
+nav {
+    width: 80%;
+    text-align: right;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li{ 
+    display: inline;
+    line-height: 56px;
+    cursor: default;
+}
+
+nav ul li a {
+    font-size: 17px;
+    letter-spacing: 1px;
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all .2s ease-in;
+}
+
+nav ul li a:hover {
+    color: #add8e6;
+}
+
+nav ul li + li {
+    margin-left: 18px;
+}
+
+.input-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+button {
+    padding: 8px 28px;
+    font-size: 16px;
+    font-weight: 400;
+    background-color: var(--app-green);
+    color: #fff;
+    border-radius: 5px;
+}
+
+input {
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    font-weight: 400;
+    padding: 10px;
+    width: 200px;
+    border: 2px solid var(--input-btn-color);
+    transition: all .5s ease-in-out;
+    background-color: rgb(53, 53, 53);
+    border-radius: 6px;
+}
+
+.contact-page {
+    margin-top: 30px;
+    height: 80vh;
+    display: grid;
+    grid-template-rows: repeat(4, max-content);
+    grid-template-columns: repeat(4, min-content);
+    background-color: var(--app-light-bg);
+    padding: 40px;
+    gap: 20px;
+    background-color: #15171f;
+    margin-top: 20px;
+    height: 70vh;
+    overflow: hidden;
+}
+
+.contact {
+    font-size: 16px;
+    color: #fff;
+    width: 285px;
+    border-radius: 5px;
+    background-color: #25262d;
+    padding: 4px 8px;
+    cursor: pointer;
+}
+
+.contact:hover {
+    border: 1px solid var(--app-red);
+}

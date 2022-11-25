@@ -8,11 +8,42 @@
         <meta name="Enjae" content=" HTML, CSS, SEO, web, web development">
         <title>JavaScript</title>   
         <link rel="shortcut icon" href="./assets/favicon.png" type="image/x-icon">
-        <link rel="stylesheet" href="assets/style/base.css" media="screen"> 
+        <link rel="stylesheet" href="assets/style/style.css" media="screen"> 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <script src="assets/script/" defer></script>
+        <script src="./assets/script/index.js" defer></script>
     </head>
     <body>
-       
+       <main class="container">
+        <header>
+            <div class="flexbox">
+                <div class="title">
+                    <h1>Contact</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="">Projects</a></li>
+                        <li><a href="">About Us</a></li>
+                        <li><a href="">Blog</a></li>
+                        <li><a href="">Contact Us</a></li>
+                    </ul>
+                </nav>
+        </header>
+        <section class="contact-wrapper">
+            <section class="input-btn">
+                <input type="text" class="name" placeholder="Name">
+                <input type="text" class="city" placeholder="City">
+                <input type="text" class="email" placeholder="Email">
+
+                <button class="add">Add</button>
+            </section>
+            <section class="contact-page">
+                <div class="contact">
+                    <p class="name">Name:</p>
+                    <p class="city">City:</p>
+                    <p class="email">Email:</p>
+                </div>
+            </section>
+        </section>  
+       </main>
     </body>
 </html>
