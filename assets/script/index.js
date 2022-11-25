@@ -28,7 +28,7 @@ function log(content) {
         Variables
 *****************************************/
 const emailRegex = /^(?=^.{8,}$)[-_A-Za-z0-9]+([_.-][a-zA-Z0-9]+)*@[A-Za-z0-9]+([.-][a-zA-Z0-9]+)*\.[A-Za-z]{2,}$/;
-const nameRegex = /^[a-zA-Z]+ [a-zA-Z]+$/;
+const nameRegex = /^[a-z ,.'-]+$/i;
 const cityRegex = /^(?:[A-Za-z]{2,}(?:(\.\s|'s\s|\s?-\s?|\s)?(?=[A-Za-z]+))){1,2}(?:[A-Za-z]+)?$/;
 const add = select('.add');
 const parent = select('.contact-page');
@@ -103,60 +103,77 @@ function newContact(name, city, email) {
     return createContact
 };
 
-/*****************************************
-        Delete Contact
-*****************************************/
 
 /*****************************************
-        Building Card
+        Building Contact
 *****************************************/
 
 function createContact(obj){
-    let contactDiv = create('div');
-    contactDiv.className = 'contact';
-    parent.appendChild(contactDiv);
+   
+ 
+
     const contactInput = contactInfo.value.split(', ');
-    contactDiv.innerText = `Name: ${contactInput[0]}\n City: ${contactInput[1]}\n Email: ${contactInput[2]}`
+
+    if(contactInfo.value == '') {
+        errorOutput.innerText = 'Enter the fields above!'
+    } else {
+        let contactDiv = create('div');
+        contactDiv.className = 'contact';
+        parent.appendChild(contactDiv);
+
+        // Delete contact
+        contactDiv.onclick = function() {
+            contactDiv.remove()
+            count -= 1;
+            contactCounter.innerText = `Contacts: ${count}`
+        }
+        contactDiv.innerText = `Name: ${contactInput[0]}\nCity: ${contactInput[1]}\n Email: ${contactInput[2]}`
+    }
 
     const arr = [];
     arr.push(obj);
 }
+
+
 /*****************************************
         Assigning new Contact
 *****************************************/
 function assignContact(){
-  let valid = true;
+   
+        if(contactInfo.value !== ''){
+            const contactInput = contactInfo.value.split(', ');
+            console.log(contactInput)
+            // Email Validation
+            if(!emailRegex.test(contactInput[2])){
+                errorOutput.innerText = 'Email is not valid. Delete and try again.'
     
-    if(contactInfo.value !== ''){
-        const contactInput = contactInfo.value.split(', ');
-        // Email Validation
-        if(!emailRegex.test(contactInput[2])){
-            errorOutput.innerText = 'Email is not valid. Delete and try again.'
-            valid = false;
-        }else if (!cityRegex.test(contactInput[1])) {
-            errorOutput.innerText = 'City is not valid. Delete and try again.'
-            valid = false;
-
-        } else if(!nameRegex.test(contactInput[0])){
-            errorOutput.innerText = 'Name is not valid. Delete and try again.'
-            valid = false;
-
+            }else if (!cityRegex.test(contactInput[1])) {
+                errorOutput.innerText = 'City is not valid. Delete and try again.'
+    
+            } else if(!nameRegex.test(contactInput[0])){
+                errorOutput.innerText = 'Name is not valid. Delete and try again.'
+    
+            }
+        } else {
+            errorOutput.innerText = 'Full Name, City and Email are required.';
         }
-    } else {
-        errorOutput.innerText = 'Full Name, City and Email are required';
-    }
-    
+        
 
-
-    // Counter
+   // Counter
 
 }
 
 /*****************************************
         onEvent add
 *****************************************/
+
+var count = 0;
 onEvent('click', add, function(){
-    assignContact(createContact())
+    event.preventDefault(assignContact(createContact()))
+    
+    count++;
+    contactCounter.innerText = `Contacts: ${count}`
+    console.log(count)
 })
 
 
