@@ -7,6 +7,7 @@ import { Contact } from './Class.js';
 /*****************************************
         Variables
 *****************************************/
+
 const emailRegex = /^(?=^.{8,}$)[-_A-Za-z0-9]+([_.-][a-zA-Z0-9]+)*@[A-Za-z0-9]+([.-][a-zA-Z0-9]+)*\.[A-Za-z]{2,}$/;
 const nameRegex = /^[a-z ,.'-]+$/i;
 const cityRegex = /^(?:[A-Za-z]{2,}(?:(\.\s|'s\s|\s?-\s?|\s)?(?=[A-Za-z]+))){1,2}(?:[A-Za-z]+)?$/;
@@ -30,6 +31,7 @@ function newContact(name, city, email) {
 /*****************************************
         Building Contact
 *****************************************/
+
 // Empty array
 const arr = []
 
@@ -60,6 +62,7 @@ function createContact(obj){
 /*****************************************
         Assigning new Contact
 *****************************************/
+
 function assignContact(){
    
         if(contactInfo.value !== ''){
@@ -78,9 +81,6 @@ function assignContact(){
         } else {
             errorOutput.innerText = 'Full Name, City and Email are required.';
         }
-        
-
-   // Counter
 
 }
 
@@ -88,14 +88,6 @@ function assignContact(){
         onEvent add
 *****************************************/
 
-
 onEvent('click', add, function(){
     event.preventDefault(assignContact(createContact(newContact(contactInfo.value))))
 })
-
-
-
-
-// onEvent('click', contactBox, function() {
-
-// })
