@@ -30,20 +30,25 @@
         </header>
         <section class="contact-wrapper">
             <section class="input-btn">
-                <input type="text" class="name" placeholder="Name">
-                <input type="text" class="city" placeholder="City">
-                <input type="text" class="email" placeholder="Email">
-
-                <button class="add">Add</button>
+                   
+                <div class="form-input">
+                    <input value="" type="text" id="name" class="contact-input" placeholder="Name, City, Email">
+                    <button class="add">Add</button>
+                    <p class="output"></p>
+                </div>
+                
             </section>
             <section class="contact-page">
                 <div class="contact">
-                    <p class="name">Name:</p>
-                    <p class="city">City:</p>
-                    <p class="email">Email:</p>
+                    <p class="p-name">Name:</p>
+                    <p class="p-city">City:</p>
+                    <p class="p-email">Email:</p>
                 </div>
             </section>
         </section>  
+        <div class="contact-counter">
+            <p>Contacts: </p>
+        </div>
        </main>
     </body>
 </html>

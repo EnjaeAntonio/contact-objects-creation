@@ -102,16 +102,21 @@ input {
     font-size: 14px;
     font-weight: 400;
     padding: 10px;
-    width: 200px;
+    width: 500px;
     border: 2px solid var(--input-btn-color);
     transition: all .5s ease-in-out;
     background-color: rgb(53, 53, 53);
     border-radius: 6px;
 }
 
+.output {
+    text-align: center;
+    font-size: 18px;
+    color: #fff;
+}
+
 .contact-page {
     margin-top: 30px;
-    height: 80vh;
     display: grid;
     grid-template-rows: repeat(4, max-content);
     grid-template-columns: repeat(4, min-content);
@@ -120,8 +125,8 @@ input {
     gap: 20px;
     background-color: #15171f;
     margin-top: 20px;
-    height: 70vh;
-    overflow: hidden;
+    height: 60vh;
+    overflow-y: scroll;
 }
 
 .contact {
@@ -136,4 +141,16 @@ input {
 
 .contact:hover {
     border: 1px solid var(--app-red);
+}
+
+.contact-counter {
+    background-color: var(--app-purple);
+    text-align: center;
+    display: grid;
+    flex-direction: column;
+    padding: 10px;
+    color: #fff;
+    position: fixed;
+    margin: 20px 0;
+    right: 130px;
 }
