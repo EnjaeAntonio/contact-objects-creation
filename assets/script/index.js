@@ -1,27 +1,7 @@
+import {onEvent, select, selectAll, create, log} from './utils.js';
+
 'use strict';
 
-// Utility Functions
-function onEvent(event, selector, callback) {
-    return selector.addEventListener(event, callback);
- }
-    
-
-function select(selector, parent = document) {
-    return parent.querySelector(selector);
-}
-
-function selectAll(selector, parent = document) {
-    return parent.querySelectorAll(selector);
-}
-
-
-function create(element, parent = document) {
-    return parent.createElement(element);
-}
-
-function log(content) {
-    console.log(content);
-}
 
 
 /*****************************************
@@ -53,40 +33,32 @@ class Contact {
         this.email = email;
     }
 
-    set name (name) {
-        if(name.length > 0) {
-            this.#name = name;
-        } else {
-            throw new TypeError('Name is not valid');
-        }
-    }
-
-    get name() {
-        return this.#name;
-    }
-    
-    set city (city) {
+    getName() {
+        console.log(getName())
         if(city.length > 1) {
             this.#city = city;
+            return this.#name;
         } else {
             throw new TypeError('City is not valid');
         }
     }
-
-    get city() {
-        return this.#city;
-    }
-
-    set email (email) {
+    
+    getCity() {
         if(email.length > 0) {
             this.#email = email;
+            return this.#city;
         } else {
             throw new TypeError('Email is not valid');
         }
     }
 
-    get email() {
-        return this.#email;
+    getEmail() {
+        if(email.length > 0) {
+            this.#email = email;
+            return this.#email;
+        } else {
+            throw new TypeError('Email is not valid');
+        }
     }
     
     getInfo() {
@@ -107,11 +79,9 @@ function newContact(name, city, email) {
 /*****************************************
         Building Contact
 *****************************************/
-
+const arr = []
 function createContact(obj){
    
- 
-
     const contactInput = contactInfo.value.split(', ');
 
     if(contactInfo.value == '') {
@@ -120,18 +90,16 @@ function createContact(obj){
         let contactDiv = create('div');
         contactDiv.className = 'contact';
         parent.appendChild(contactDiv);
+        arr.push(obj)
+        contactCounter.innerText = `Contacts: ${arr.length}`
 
         // Delete contact
         contactDiv.onclick = function() {
             contactDiv.remove()
-            count -= 1;
-            contactCounter.innerText = `Contacts: ${count}`
+            contactCounter.innerText = `Contacts: ${arr.length -= 1}`
         }
         contactDiv.innerText = `Name: ${contactInput[0]}\nCity: ${contactInput[1]}\n Email: ${contactInput[2]}`
     }
-
-    const arr = [];
-    arr.push(obj);
 }
 
 
@@ -142,11 +110,10 @@ function assignContact(){
    
         if(contactInfo.value !== ''){
             const contactInput = contactInfo.value.split(', ');
-            console.log(contactInput)
             // Email Validation
             if(!emailRegex.test(contactInput[2])){
                 errorOutput.innerText = 'Email is not valid. Delete and try again.'
-    
+
             }else if (!cityRegex.test(contactInput[1])) {
                 errorOutput.innerText = 'City is not valid. Delete and try again.'
     
@@ -167,13 +134,9 @@ function assignContact(){
         onEvent add
 *****************************************/
 
-var count = 0;
+
 onEvent('click', add, function(){
     event.preventDefault(assignContact(createContact()))
-    
-    count++;
-    contactCounter.innerText = `Contacts: ${count}`
-    console.log(count)
 })
 
 
