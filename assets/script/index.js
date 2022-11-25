@@ -64,16 +64,16 @@ function assignContact(){
    
         if(contactInfo.value !== ''){
             const contactInput = contactInfo.value.split(', ');
+
             // Email Validation
             if(!emailRegex.test(contactInput[2])){
                 errorOutput.innerText = 'Email is not valid. Delete and try again.'
-
             }else if (!cityRegex.test(contactInput[1])) {
                 errorOutput.innerText = 'City is not valid. Delete and try again.'
     
             } else if(!nameRegex.test(contactInput[0])){
                 errorOutput.innerText = 'Name is not valid. Delete and try again.'
-    
+                
             }
         } else {
             errorOutput.innerText = 'Full Name, City and Email are required.';
