@@ -22,7 +22,6 @@ const errorOutput = select('.output')
 /*****************************************
         Creating new Contact
 *****************************************/
-
 function newContact(name, city, email) {
     const createContact = new Contact(name, city, email)
     return createContact
@@ -45,7 +44,7 @@ function createContact(obj){
     } else {
         let contactDiv = create('div');
         contactDiv.className = 'contact';
-        parent.appendChild(contactDiv);
+        parent.prepend(contactDiv);
         arr.push(obj)
         contactCounter.innerText = `Contacts: ${arr.length}`
         errorOutput.innerText = 'Contact Created!';

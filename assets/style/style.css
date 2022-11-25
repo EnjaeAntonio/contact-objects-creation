@@ -133,6 +133,7 @@ input {
 }
 
 .contact {
+    z-index: 1;
     font-size: 16px;
     color: #fff;
     width: 285px;
