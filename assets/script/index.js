@@ -2,8 +2,6 @@ import {onEvent, select, selectAll, create, log} from './utils.js';
 import { Contact } from './Class.js';
 'use strict';
 
-
-
 /*****************************************
         Variables
 *****************************************/
@@ -21,11 +19,11 @@ const errorOutput = select('.output')
 /*****************************************
         Creating new Contact
 *****************************************/
+
 function newContact(name, city, email) {
     const createContact = new Contact(name, city, email)
     return createContact
 };
-
 
 /*****************************************
         Building Contact
@@ -40,7 +38,14 @@ function createContact(obj){
 
     if(contactInfo.value == '') {
         errorOutput.innerText = 'Enter the fields above!'
-    } else {
+    } else if(!emailRegex.test(contactInput[2])){
+        errorOutput.innerText = 'Email is not valid. Try again.'
+    } else if (!cityRegex.test(contactInput[1])) {
+        errorOutput.innerText = 'City is not valid. Try again.'
+    } else if(!nameRegex.test(contactInput[0])){
+        errorOutput.innerText = 'Name is not valid. Try again.'   
+    } else if (contactInfo.value){
+
         let contactDiv = create('div');
         contactDiv.className = 'contact';
         parent.prepend(contactDiv);
@@ -53,31 +58,14 @@ function createContact(obj){
             contactDiv.remove()
             contactCounter.innerText = `Contacts: ${arr.length -= 1}`
         }
-        contactDiv.innerText = `Name: ${contactInput[0]}\nCity: ${contactInput[1]}\n Email: ${contactInput[2]}`
-    }
+
+        let createdContent = contactDiv.innerText = `Name: ${contactInput[0]}\nCity: ${contactInput[1]}\n Email: ${contactInput[2]}`;
+        contactDiv.innerText = createdContent;
+
+
+     } else {
+    errorOutput.innerText = 'Full Name, City and Email are required.';
 }
-
-
-/*****************************************
-        Assigning new Contact
-*****************************************/
-
-function assignContact(){
-        if(contactInfo.value !== ''){
-            const contactInput = contactInfo.value.split(', ');
-
-            // Email Validation
-            if(!emailRegex.test(contactInput[2])){
-                errorOutput.innerText = 'Email is not valid. Delete and try again.'
-            }else if (!cityRegex.test(contactInput[1])) {
-                errorOutput.innerText = 'City is not valid. Delete and try again.'
-            } else if(!nameRegex.test(contactInput[0])){
-                errorOutput.innerText = 'Name is not valid. Delete and try again.'
-                
-            }
-        } else {
-            errorOutput.innerText = 'Full Name, City and Email are required.';
-        }
 
 }
 
@@ -86,5 +74,5 @@ function assignContact(){
 *****************************************/
 
 onEvent('click', add, function(){
-    event.preventDefault(assignContact(createContact(newContact(contactInfo.value))))
+    event.preventDefault(createContact(newContact(contactInfo.value)));
 })

@@ -15,21 +15,20 @@ class Contact {
     }
 
     getName() {
-        console.log(getName())
-        if(city.length > 1) {
-            this.#city = city;
+        if(name.length > 1) {
+            this.#name = name;
             return this.#name;
         } else {
-            throw new TypeError('City is not valid');
+            throw new TypeError('Name is not valid');
         }
     }
     
     getCity() {
-        if(email.length > 0) {
-            this.#email = email;
+        if(city.length > 0) {
+            this.#city = city;
             return this.#city;
         } else {
-            throw new TypeError('Email is not valid');
+            throw new TypeError('City is not valid');
         }
     }
 
